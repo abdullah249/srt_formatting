@@ -17,7 +17,7 @@ This is a simple web frontend for the Recursive SRT Formatter.
    ```bash
    python app.py
    ```
-4. Open your browser to [http://127.0.0.1:8080](http://127.0.0.1:8080)
+4. Open your browser to [http://127.0.0.1:5000](http://127.0.0.1:5000)
 
 ## Notes
 - Only `.srt` files are supported.
