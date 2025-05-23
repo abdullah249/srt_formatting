@@ -2,18 +2,31 @@ steps:
   # Build the container image
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'gcr.io/dev-cloudrun-tools/srt-formatter:$COMMIT_SHA', '.']
-
   # Push the container image to Container Registry
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/dev-cloudrun-tools/srt-formatter:$COMMIT_SHA']
-
   # Tag the image as 'latest'
   - name: 'gcr.io/cloud-builders/docker'
     args: ['tag', 'gcr.io/dev-cloudrun-tools/srt-formatter:$COMMIT_SHA', 'gcr.io/dev-cloudrun-tools/srt-formatter:latest']
-
   # Push the 'latest' tag
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/dev-cloudrun-tools/srt-formatter:latest']
+  # Deploy to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    args:
+      - 'run'
+      - 'deploy'
+      - 'srt-formatter'
+      - '--image'
+      - 'gcr.io/dev-cloudrun-tools/srt-formatter:$COMMIT_SHA'
+      - '--platform'
+      - 'managed'
+      - '--region'
+      - 'us-central1'
+      - '--allow-unauthenticated'
+      - '--project'
+      - 'dev-cloudrun-tools'
+    entrypoint: 'gcloud'
 
 images:
   - 'gcr.io/dev-cloudrun-tools/srt-formatter:$COMMIT_SHA'
@@ -21,5 +34,4 @@ images:
 
 options:
   logging: CLOUD_LOGGING_ONLY
-
-serviceAccount: '614638457986-compute@developer.gserviceaccount.com' 
+  serviceAccount: '614638457986-compute@developer.gserviceaccount.com'
