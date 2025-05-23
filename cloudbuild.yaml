@@ -9,6 +9,7 @@ steps:
     args: ['push', 'gcr.io/dev-cloudrun-tools/srt-formatter:latest']
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     args:
+      - gcloud
       - run
       - deploy
       - srt-formatter
