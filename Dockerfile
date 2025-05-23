@@ -12,5 +12,7 @@ COPY recursive_srt_formatter.py .
 # Create directories for input and output SRT files
 RUN mkdir -p input_srt_files output_srt_files
 
+EXPOSE 8080
+
 # Set the entry point
 ENTRYPOINT ["python", "recursive_srt_formatter.py"] 
