@@ -17,4 +17,4 @@ RUN chmod -R 777 /tmp /app/input_srt_files /app/output_srt_files
 EXPOSE 8080
 
 # Set the entry point to run the Flask app
-CMD ["python", "recursive_srt_formatter.py"]
+CMD ["python", "app.py"]
