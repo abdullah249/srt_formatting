@@ -25,7 +25,7 @@ steps:
       - 'asia-south1'
       - '--allow-unauthenticated'
       - '--timeout'
-      - '180s'
+      - '300s'
       - '--project'
       - 'dev-cloudrun-tools'
     entrypoint: 'gcloud'
