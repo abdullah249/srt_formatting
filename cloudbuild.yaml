@@ -22,7 +22,7 @@ steps:
       - '--platform'
       - 'managed'
       - '--region'
-      - 'us-central1'
+      - 'asia-south1'
       - '--allow-unauthenticated'
       - '--project'
       - 'dev-cloudrun-tools'
